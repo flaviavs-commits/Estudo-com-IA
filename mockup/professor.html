@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ricardo Almeida — Professor · Estudo com IA</title>
+<title>Ricardo Almeida — Tutor · Estudo com IA</title>
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/ui.css">
 </head>
@@ -19,6 +19,7 @@
 <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3.8 19.4h16.4"/><path d="M6.6 19.4v-6.2"/><path d="M12 19.4V8.6"/><path d="M17.4 19.4V4.8"/></symbol>
 <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18.5V6"/><path d="m6.8 11 5.2-5.2L17.2 11"/></symbol>
 <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 10 4 4 4-4"/></symbol>
+<symbol id="i-chev-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 14 4-4 4 4"/></symbol>
 <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5V15"/><path d="m7 10.5 5 5 5-5"/><path d="M4.5 19.5h15"/></symbol>
 <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.4V12l3.2 2"/></symbol>
 <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.8a6 6 0 0 1 12 0c0 4 1.6 5.4 1.6 5.4H4.4S6 13.8 6 9.8Z"/><path d="M10.2 18.6a2 2 0 0 0 3.6 0"/></symbol>
@@ -33,41 +34,43 @@
 
 <div class="shell">
 <aside class="side">
-  <a class="brand" href="./"><span class="mark"><svg><use href="#i-spark"/></svg></span>Estudo com IA&nbsp;<span>· Professor</span></a>
+  <a class="brand" href="./"><span class="mark"><svg><use href="#i-spark"/></svg></span>Estudo com IA&nbsp;<span>· Tutor</span></a>
 
   <p class="nlabel">Principal</p>
   <nav class="nav">
     <a class="on" data-s="inicio"><svg class="ic"><use href="#i-home"/></svg>Início</a>
-    <a data-s="turmas"><svg class="ic"><use href="#i-users"/></svg>Turmas</a>
+    <a data-s="turmas"><svg class="ic"><use href="#i-users"/></svg>Workspaces</a>
   </nav>
   <p class="nlabel">Ensino</p>
   <nav class="nav">
-    <a data-s="avaliacoes"><svg class="ic"><use href="#i-pen"/></svg>Avaliações</a>
+    <a data-s="avaliacoes"><svg class="ic"><use href="#i-pen"/></svg>Conteúdos</a>
     <a data-s="correcao"><svg class="ic"><use href="#i-check"/></svg>Correção<span class="badge">6</span></a>
     <a data-s="acervo"><svg class="ic"><use href="#i-book"/></svg>Acervo</a>
-    <a data-s="alertas"><svg class="ic"><use href="#i-spark"/></svg>Alertas da IA</a>
+    <a data-s="alertas"><svg class="ic"><use href="#i-spark"/></svg>Insights da IA</a>
   </nav>
-  <p class="nlabel">Comunicação</p>
+  <p class="nlabel">Compartilhar</p>
   <nav class="nav">
-    <a data-s="mensagens"><svg class="ic"><use href="#i-mail"/></svg>Mensagens<span class="badge">3</span></a>
+    <a data-s="workspace"><svg class="ic"><use href="#i-send"/></svg>Compartilhar workspace</a>
   </nav>
-  <p class="nlabel">Conta</p>
-  <nav class="nav">
-    <a data-s="conta"><svg class="ic"><use href="#i-user"/></svg>Minha conta</a>
-    <a href="./"><svg class="ic"><use href="#i-logout"/></svg>Sair</a>
-  </nav>
-
   <div class="spacer"></div>
-  <div class="sideuser">
-    <span class="av" style="background:#2C302D">RA</span>
-    <div><b>Ricardo Almeida</b><span>Português</span></div>
-    <a class="out" href="./" aria-label="Sair"><svg class="ic"><use href="#i-logout"/></svg></a>
+  <div class="ddwrap sideuser-wrap">
+    <button class="sideuser" data-dd="dd-sideuser">
+      <span class="av" style="background:#2C302D">RA</span>
+      <div><b>Ricardo Almeida</b><span>Tutor</span></div>
+      <svg class="ic out-ic"><use href="#i-chev-up"/></svg>
+    </button>
+    <div class="dd dd-up" id="dd-sideuser">
+      <p class="ddh">Ricardo Almeida</p>
+      <a class="ddi" data-modal="conta"><svg class="ic"><use href="#i-user"/></svg><span><b>Minha conta</b></span></a>
+      <div class="ddsep"></div>
+      <a class="ddi danger" href="./"><svg class="ic"><use href="#i-logout"/></svg><span><b>Sair</b></span></a>
+    </div>
   </div>
 </aside>
+<div class="dd-backdrop" id="dd-backdrop"></div>
 
 <main class="main">
   <div class="topbar">
-    <button class="tsearch"><svg class="ic"><use href="#i-search"/></svg>Buscar ou comandar…<kbd>Ctrl K</kbd></button>
     <span class="topsp"></span>
     <span class="ddwrap">
       <button class="iconbtn" data-dd="dd-notif" aria-label="Notificações"><svg class="ic"><use href="#i-bell"/></svg><span class="ndot"></span></button>
@@ -75,15 +78,13 @@
         <p class="ddh">Notificações</p>
         <a class="ddi" data-s="correcao"><span class="dot" style="--c:var(--warn)"></span><span><b>6 redações aguardam revisão</b><span>Simulado 03 · IA já sugeriu as notas</span></span></a>
         <a class="ddi" data-s="alertas"><span class="dot" style="--c:var(--bad)"></span><span><b>Carlos Eduardo: risco de evasão</b><span>sem estudar há 12 dias</span></span></a>
-        <a class="ddi" data-s="mensagens"><span class="dot" style="--c:var(--gold)"></span><span><b>Marina enviou a redação</b><span>pede revisão da conclusão · ontem</span></span></a>
       </div>
     </span>
-    <button class="iconbtn" data-s="mensagens" aria-label="Mensagens"><svg class="ic"><use href="#i-mail"/></svg><span class="ndot"></span></button>
     <span class="ddwrap">
       <button class="avbtn" data-dd="dd-user" style="background:#2C302D" aria-label="Conta">RA</button>
       <div class="dd" id="dd-user" style="width:230px">
         <p class="ddh">Ricardo Almeida</p>
-        <a class="ddi" data-s="conta"><svg class="ic"><use href="#i-user"/></svg><span><b>Minha conta</b></span></a>
+        <a class="ddi" data-modal="conta"><svg class="ic"><use href="#i-user"/></svg><span><b>Minha conta</b></span></a>
         <a class="ddi" data-s="turmas"><svg class="ic"><use href="#i-users"/></svg><span><b>Minhas turmas</b></span></a>
         <div class="ddsep"></div>
         <a class="ddi danger" href="./"><svg class="ic"><use href="#i-logout"/></svg><span><b>Sair</b></span></a>
@@ -99,15 +100,15 @@
       <div class="tx">
         <p class="eyebrow">Início</p>
         <h1>Boa tarde, Ricardo. A correção do Simulado 03 está 92% pronta.</h1>
-        <p class="sub">A IA corrigiu as objetivas e sugeriu notas para as dissertativas com a sua rubrica. Faltam 6 redações para a sua revisão.</p>
+        <p class="sub">A IA corrigiu as objetivas e sugeriu notas para as dissertativas com sua rubrica. Faltam 6 redações para sua revisão.</p>
       </div>
       <div class="actions"><button class="btn btn-gho" data-s="avaliacoes"><svg class="ic"><use href="#i-pen"/></svg>Nova avaliação</button><button class="btn btn-pri" data-s="correcao"><svg class="ic"><use href="#i-check"/></svg>Revisar pendentes</button></div>
     </div>
     <div class="tiles">
       <div class="tile"><span class="tico"><svg class="ic"><use href="#i-pen"/></svg></span><div class="lbl">Redações na fila</div><div class="num">6</div><div class="sub warn">aguardam revisão</div></div>
       <div class="tile"><span class="tico"><svg class="ic"><use href="#i-clock"/></svg></span><div class="lbl">Tempo devolvido</div><div class="num">11h</div><div class="sub up">este mês, em correção</div></div>
-      <div class="tile"><span class="tico"><svg class="ic"><use href="#i-chart"/></svg></span><div class="lbl">Média das turmas</div><div class="num">7,2</div><div class="sub up">▲ 0,2 no bimestre</div></div>
-      <div class="tile"><span class="tico"><svg class="ic"><use href="#i-users"/></svg></span><div class="lbl">Alunos em atenção</div><div class="num">3</div><div class="sub">de 103 ativos</div></div>
+      <div class="tile"><span class="tico"><svg class="ic"><use href="#i-chart"/></svg></span><div class="lbl">Média dos estudantes</div><div class="num">7,2</div><div class="sub up">▲ 0,2 na semana</div></div>
+      <div class="tile"><span class="tico"><svg class="ic"><use href="#i-users"/></svg></span><div class="lbl">Precisa de atenção</div><div class="num">3</div><div class="sub">de 103 ativos</div></div>
     </div>
     <div class="cols">
       <div class="card hero">
@@ -131,7 +132,7 @@
           <div class="qgrid">
             <button class="qa" data-s="avaliacoes"><span class="qic"><svg class="ic"><use href="#i-doc"/></svg></span><span><b>Prova</b><span>com gabarito</span></span></button>
             <button class="qa" data-s="avaliacoes"><span class="qic"><svg class="ic"><use href="#i-check"/></svg></span><span><b>Lista</b><span>de exercícios</span></span></button>
-            <button class="qa" data-s="avaliacoes"><span class="qic"><svg class="ic"><use href="#i-book"/></svg></span><span><b>Plano de aula</b><span>alinhado à BNCC</span></span></button>
+            <button class="qa" data-s="avaliacoes"><span class="qic"><svg class="ic"><use href="#i-book"/></svg></span><span><b>Plano de estudos</b><span>estrutura semanas de conteúdo</span></span></button>
             <button class="qa" data-s="turmas"><span class="qic"><svg class="ic"><use href="#i-users"/></svg></span><span><b>Feedback</b><span>individual, em escala</span></span></button>
           </div>
         </div>
@@ -139,54 +140,54 @@
           <h2><svg class="ic"><use href="#i-spark"/></svg>Alertas da IA</h2>
           <ul class="list" style="margin-top:12px">
             <li><span class="dot" style="background:var(--warn)"></span><div class="tx"><b>14 alunos travaram em subordinadas</b><span>revisão sugerida antes do simulado</span></div></li>
-            <li><span class="dot" style="background:var(--good)"></span><div class="tx"><b>Turma C: +18% em interpretação</b><span>efeito das listas adaptativas</span></div></li>
+            <li><span class="dot" style="background:var(--good)"></span><div class="tx"><b>Gramática Avançada: +18% em interpretação</b><span>efeito das listas adaptativas</span></div></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ TURMAS ══ -->
+  <!-- ══ WORKSPACES ══ -->
   <section class="screen" id="s-turmas">
     <div class="phead">
-      <div class="tx"><p class="eyebrow">Turmas</p><h1>Suas três turmas de Português</h1></div>
-      <div class="actions"><button class="btn btn-pri"><svg class="ic"><use href="#i-users"/></svg>Nova turma</button></div>
+      <div class="tx"><p class="eyebrow">Workspaces</p><h1>Seus espaços de estudo configurados</h1></div>
+      <div class="actions"><button class="btn btn-pri"><svg class="ic"><use href="#i-users"/></svg>Novo workspace</button></div>
     </div>
     <div class="tgrid">
       <div class="tcard">
-        <div class="thead"><span class="tname">2º ano A</span><span class="pill p-ok">média 7,2</span></div>
-        <div class="meta">34 alunos · seg &amp; qua, 7h30</div>
+        <div class="thead"><span class="tname">Português ENEM</span><span class="pill p-ok">média 7,2</span></div>
+        <div class="meta">34 estudantes · compartilhado</div>
         <div class="hbar"><i style="--w:74%"></i></div>
-        <div class="prog"><span>Plano de ensino</span><span>74%</span></div>
+        <div class="prog"><span>Conteúdo configurado</span><span>74%</span></div>
       </div>
       <div class="tcard">
-        <div class="thead"><span class="tname">2º ano B</span><span class="pill p-warn">média 6,9</span></div>
-        <div class="meta">36 alunos · ter &amp; qui, 7h30</div>
+        <div class="thead"><span class="tname">Redação Nota 1000</span><span class="pill p-warn">média 6,9</span></div>
+        <div class="meta">36 estudantes · compartilhado</div>
         <div class="hbar"><i style="--w:71%"></i></div>
-        <div class="prog"><span>Plano de ensino</span><span>71%</span></div>
+        <div class="prog"><span>Conteúdo configurado</span><span>71%</span></div>
       </div>
       <div class="tcard">
-        <div class="thead"><span class="tname">2º ano C</span><span class="pill p-ok">média 7,5</span></div>
-        <div class="meta">33 alunos · ter &amp; sex, 10h</div>
+        <div class="thead"><span class="tname">Gramática Avançada</span><span class="pill p-ok">média 7,5</span></div>
+        <div class="meta">33 estudantes · compartilhado</div>
         <div class="hbar"><i style="--w:78%"></i></div>
-        <div class="prog"><span>Plano de ensino</span><span>78%</span></div>
+        <div class="prog"><span>Conteúdo configurado</span><span>78%</span></div>
       </div>
     </div>
     <div class="cols fullcard">
       <div class="card">
-        <h2><svg class="ic"><use href="#i-users"/></svg>Turma B — atenção esta semana</h2>
+        <h2><svg class="ic"><use href="#i-users"/></svg>Português ENEM — atenção esta semana</h2>
         <ul class="list" style="margin-top:12px">
-          <li><span class="dot" style="background:var(--bad)"></span><div class="tx"><b>Carlos Eduardo Melo</b><span>3 listas atrasadas · média 5,5</span></div><button class="btn btn-gho btn-sm" data-s="mensagens">Mensagem</button></li>
-          <li><span class="dot" style="background:var(--warn)"></span><div class="tx"><b>Júlia Fernandes</b><span>caiu 1,2 ponto no bimestre</span></div><button class="btn btn-gho btn-sm">Enviar reforço</button></li>
-          <li><span class="dot" style="background:var(--good)"></span><div class="tx"><b>Marina Souza</b><span>6 dias seguidos com o tutor</span></div><button class="btn btn-gho btn-sm">Elogiar</button></li>
+          <li><span class="dot" style="background:var(--bad)"></span><div class="tx"><b>Carlos Eduardo Melo</b><span>3 exercícios atrasados · média 5,5</span></div><button class="btn btn-gho btn-sm">Ver perfil</button></li>
+          <li><span class="dot" style="background:var(--warn)"></span><div class="tx"><b>Júlia Fernandes</b><span>performance caiu 1,2 pontos</span></div><button class="btn btn-gho btn-sm">Enviar reforço</button></li>
+          <li><span class="dot" style="background:var(--good)"></span><div class="tx"><b>Marina Souza</b><span>6 dias seguidos com tutor</span></div><button class="btn btn-gho btn-sm">Elogiar</button></li>
         </ul>
       </div>
       <div class="card">
-        <h2><svg class="ic"><use href="#i-chart"/></svg>Uso do tutor por turma</h2>
+        <h2><svg class="ic"><use href="#i-chart"/></svg>Uso do tutor por workspace</h2>
         <div style="margin-top:12px">
-          <div class="hrow"><span class="hlbl">2º ano C</span><span class="hbar"><i style="--w:88%"></i></span><span class="hval">88%</span></div>
-          <div class="hrow"><span class="hlbl">2º ano A</span><span class="hbar"><i style="--w:81%"></i></span><span class="hval">81%</span></div>
-          <div class="hrow"><span class="hlbl">2º ano B</span><span class="hbar mute"><i style="--w:64%"></i></span><span class="hval">64%</span></div>
+          <div class="hrow"><span class="hlbl">Gramática Avançada</span><span class="hbar"><i style="--w:88%"></i></span><span class="hval">88%</span></div>
+          <div class="hrow"><span class="hlbl">Português ENEM</span><span class="hbar"><i style="--w:81%"></i></span><span class="hval">81%</span></div>
+          <div class="hrow"><span class="hlbl">Redação Nota 1000</span><span class="hbar mute"><i style="--w:64%"></i></span><span class="hval">64%</span></div>
         </div>
       </div>
     </div>
@@ -198,7 +199,7 @@
     <div class="cols cols-rev">
       <div class="card">
         <h2><svg class="ic"><use href="#i-sliders"/></svg>Configuração</h2>
-        <p class="desc">Prova de Português · 2º ano</p>
+        <p class="desc">Prova de Português · Workspace ENEM</p>
         <div class="field"><label>Conteúdo-base</label><div class="selectbox">Unidade 4 — Sintaxe do período composto<svg class="ic"><use href="#i-chev"/></svg></div></div>
         <div class="field"><label>Formato</label><div class="selectbox">10 objetivas + 2 dissertativas<svg class="ic"><use href="#i-chev"/></svg></div></div>
         <div class="field"><label>Dificuldade</label><div class="selectbox">Média · curva do ENEM<svg class="ic"><use href="#i-chev"/></svg></div></div>
@@ -284,18 +285,18 @@
 
   <!-- ══ ALERTAS ══ -->
   <section class="screen" id="s-alertas">
-    <div class="phead"><div class="tx"><p class="eyebrow">Alertas da IA</p><h1>O que a IA percebeu nas suas turmas</h1></div></div>
+    <div class="phead"><div class="tx"><p class="eyebrow">Alertas da IA</p><h1>O que a IA percebeu nos seus workspaces</h1></div></div>
     <div class="feed">
       <div class="alertcard"><span class="stripe" style="--c:var(--warn)"></span>
-        <div class="tx"><b>14 alunos do 2º B travaram em orações subordinadas</b>
-          <p>Erro dominante: adjetiva × adverbial (62% dos casos). O simulado de sexta cobra o tema em 8 questões.</p>
-          <div class="row"><button class="btn btn-pri btn-sm"><svg class="ic"><use href="#i-spark"/></svg>Criar revisão guiada</button><button class="btn btn-gho btn-sm">Ver os 14 alunos</button></div>
+        <div class="tx"><b>14 estudantes travaram em orações subordinadas</b>
+          <p>Erro dominante: adjetiva × adverbial (62% dos casos). O próximo simulado cobra o tema em 8 questões.</p>
+          <div class="row"><button class="btn btn-pri btn-sm"><svg class="ic"><use href="#i-spark"/></svg>Criar revisão guiada</button><button class="btn btn-gho btn-sm">Ver os 14 estudantes</button></div>
         </div>
       </div>
       <div class="alertcard"><span class="stripe" style="--c:var(--bad)"></span>
         <div class="tx"><b>Carlos Eduardo está 3 listas atrasado e parou de usar o tutor</b>
           <p>Última sessão há 12 dias. Média caiu de 6,8 para 5,5 em um mês. Padrão parecido com evasões do ano passado.</p>
-          <div class="row"><button class="btn btn-pri btn-sm">Plano de recuperação</button><button class="btn btn-gho btn-sm" data-s="mensagens">Enviar mensagem</button></div>
+          <div class="row"><button class="btn btn-pri btn-sm">Plano de recuperação</button><button class="btn btn-gho btn-sm">Ver perfil</button></div>
         </div>
       </div>
       <div class="alertcard"><span class="stripe" style="--c:var(--good)"></span>
@@ -307,65 +308,71 @@
     </div>
   </section>
 
-  <!-- ══ MENSAGENS ══ -->
-  <section class="screen" id="s-mensagens">
+  <!-- ══ COMPARTILHAR WORKSPACE ══ -->
+  <section class="screen" id="s-workspace">
     <div class="phead">
-      <div class="tx"><p class="eyebrow">Comunicação</p><h1>Mensagens</h1></div>
-      <div class="actions"><button class="btn btn-pri"><svg class="ic"><use href="#i-mail"/></svg>Nova conversa</button></div>
-    </div>
-    <div class="msgs">
-      <div class="convo">
-        <button class="on"><span class="av" style="--c:#0E8A57">MS</span><span><b>Marina Souza · 2º B</b><span>Professor, pode olhar minha redação?</span></span><span class="when">ontem</span></button>
-        <button><span class="av" style="--c:#8A5A44">CS</span><span><b>Cristina Souza · responsável</b><span>Obrigada pelo retorno sobre a Marina!</span></span><span class="unread">1</span></button>
-        <button><span class="av" style="--c:#C79A2A">CO</span><span><b>Coordenação</b><span>Conselho de classe: pauta do 2º ano…</span></span><span class="unread">2</span></button>
-        <button><span class="av" style="--c:#4C524E">CE</span><span><b>Carlos Eduardo · 2º B</b><span>Professor, perdi o prazo da lista…</span></span><span class="when">seg</span></button>
+      <div class="tx">
+        <p class="eyebrow">Compartilhar</p>
+        <h1>Compartilhe seu workspace com alunos</h1>
       </div>
-      <div class="thread">
-        <div class="th"><span class="av" style="background:#0E8A57">MS</span><div><b>Marina Souza</b><span>online agora</span></div><span style="margin-left:auto"><button class="btn btn-gho btn-sm">Ver aluna</button></span></div>
-        <div class="body">
-          <span class="daychip">ontem</span>
-          <div class="bub them">Professor, o senhor pode dar uma olhada na minha redação sobre evasão escolar? A IA sugeriu 8,0 mas fiquei na dúvida na conclusão.<span class="bt">18:20</span></div>
-          <div class="bub me">Claro, Marina. A tese ficou ótima e o repertório também. Concordo com a IA: o que segura a nota é a conclusão sem agente definido — quem faz o quê?<span class="bt">19:05</span></div>
-          <span class="daychip">hoje</span>
-          <div class="bub me">Dica: reescreva a conclusão nomeando MEC e escolas como agentes. Traz na sexta antes do simulado que revisamos juntos. 👍<span class="bt">14:02</span></div>
+    </div>
+    <div class="cols">
+      <div class="card hero">
+        <h2><svg class="ic"><use href="#i-send"/></svg>Link para alunos</h2>
+        <p class="desc">Os alunos que usarem este link terão acesso ao seu conteúdo configurado</p>
+        <div class="field" style="margin-top:20px">
+          <label>Link de compartilhamento</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input class="input" value="https://estudo-ia.com/workspace/ra-lportuguesa" style="flex:1" readonly>
+            <button class="btn btn-pri"><svg class="ic"><use href="#i-doc"/></svg>Copiar</button>
+          </div>
         </div>
-        <div class="composer"><input placeholder="Escreva para Marina…" aria-label="Mensagem"><button class="send" aria-label="Enviar"><svg><use href="#i-send"/></svg></button></div>
+        <div class="field" style="margin-top:14px">
+          <label>Permissões</label>
+          <div class="togglerow"><span>Acesso ao acervo<small>materiais, resumos, simulados</small></span><span class="tg"></span></div>
+          <div class="togglerow"><span>Correção automática<small>IA usa sua rubrica</small></span><span class="tg"></span></div>
+          <div class="togglerow"><span>Alertas de progresso<small>quando aluno precisa de ajuda</small></span><span class="tg"></span></div>
+        </div>
+        <div class="tfoot" style="margin-top:20px">
+          <button class="btn btn-pri"><svg class="ic"><use href="#i-send"/></svg>Gerar novo link</button>
+          <button class="btn btn-gho">Ver quem acessou</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2><svg class="ic"><use href="#i-users"/></svg>Alunos no seu workspace</h2>
+        <p class="desc">Usando o link atual</p>
+        <div style="margin-top:12px">
+          <div class="hrow"><span class="hlbl">Marina Souza</span><span class="hval">ativa agora</span></div>
+          <div class="hrow"><span class="hlbl">Carlos Eduardo</span><span class="hval">último: ontem</span></div>
+          <div class="hrow"><span class="hlbl">Ana Beatriz</span><span class="hval">último: 15/07</span></div>
+          <div class="hrow"><span class="hlbl">12 outros</span><span class="hval">acessaram este mês</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ MINHA CONTA ══ -->
-  <section class="screen" id="s-conta">
-    <div class="phead"><div class="tx"><p class="eyebrow">Conta</p><h1>Minha conta</h1></div></div>
+  </div>
+</main>
+</div>
+
+<div class="modal-backdrop" id="modal-backdrop"></div>
+<div class="modal" id="modal-conta">
+  <div class="modal-head">
+    <h3>Minha conta</h3>
+    <button class="modal-x" data-modal-close aria-label="Fechar">✕</button>
+  </div>
+  <div class="modal-body">
     <div class="acgrid">
-      <div class="card acprofile">
-        <span class="bigav" style="background:#2C302D">RA</span>
-        <h3>Ricardo Almeida</h3>
-        <p>Português · desde 2019</p>
-        <button class="btn btn-gho btn-sm">Alterar foto</button>
-        <div class="acmeta" style="margin-top:18px">
-          <span><b>3</b>turmas</span>
-          <span><b>103</b>alunos</span>
-          <span><b>310</b>créditos</span>
-        </div>
-      </div>
       <div class="stack">
-        <div class="card">
-          <h2><svg class="ic"><use href="#i-user"/></svg>Dados pessoais</h2>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
-            <div class="field" style="margin:0"><label>Nome completo</label><input class="input" value="Ricardo Almeida"></div>
-            <div class="field" style="margin:0"><label>E-mail</label><input class="input" value="ricardo.almeida@horizonte.edu"></div>
-            <div class="field" style="margin:0"><label>Disciplina</label><input class="input" value="Língua Portuguesa"></div>
-            <div class="field" style="margin:0"><label>Telefone</label><input class="input" value="(11) 9 7712-4483"></div>
-          </div>
-          <div class="tfoot"><button class="btn btn-pri">Salvar alterações</button><button class="btn btn-gho">Trocar senha</button></div>
-        </div>
-        <div class="card">
-          <h2><svg class="ic"><use href="#i-bell"/></svg>Preferências</h2>
-          <div style="margin-top:8px">
-            <div class="togglerow"><span>Alertas da IA sobre alunos<small>risco de evasão e padrões de erro</small></span><span class="tg"></span></div>
-            <div class="togglerow"><span>Resumo diário da correção<small>fila e sugestões pendentes</small></span><span class="tg"></span></div>
-            <div class="togglerow"><span>Mensagens de responsáveis<small>notificar fora do horário escolar</small></span><span class="tg off"></span></div>
+        <div class="card acprofile">
+          <span class="bigav" style="background:#2C302D">RA</span>
+          <h3>Ricardo Almeida</h3>
+          <p>Tutor · Língua Portuguesa</p>
+          <button class="btn btn-gho btn-sm">Alterar foto</button>
+          <div class="acmeta" style="margin-top:18px">
+            <span><b>3</b>workspaces</span>
+            <span><b>103</b>estudantes</span>
+            <span><b>310</b>créditos</span>
           </div>
         </div>
         <div class="card">
@@ -374,11 +381,28 @@
           <a class="btn btn-danger" href="./"><svg class="ic"><use href="#i-logout"/></svg>Sair da conta</a>
         </div>
       </div>
+      <div class="stack">
+        <div class="card">
+          <h2><svg class="ic"><use href="#i-user"/></svg>Dados pessoais</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
+            <div class="field" style="margin:0"><label>Nome completo</label><input class="input" value="Ricardo Almeida"></div>
+            <div class="field" style="margin:0"><label>E-mail</label><input class="input" value="ricardo.almeida@estudo.com"></div>
+            <div class="field" style="margin:0"><label>Área de atuação</label><input class="input" value="Língua Portuguesa"></div>
+            <div class="field" style="margin:0"><label>Telefone</label><input class="input" value="(11) 9 7712-4483"></div>
+          </div>
+          <div class="tfoot"><button class="btn btn-pri">Salvar alterações</button><button class="btn btn-gho">Trocar senha</button></div>
+        </div>
+        <div class="card">
+          <h2><svg class="ic"><use href="#i-bell"/></svg>Preferências</h2>
+          <div style="margin-top:8px">
+            <div class="togglerow"><span>Alertas da IA sobre estudantes<small>risco de desengajamento e padrões de erro</small></span><span class="tg"></span></div>
+            <div class="togglerow"><span>Resumo diário da correção<small>fila e sugestões pendentes</small></span><span class="tg"></span></div>
+            <div class="togglerow"><span>Novo acesso ao workspace<small>notificar quando alguém entrar pelo link</small></span><span class="tg off"></span></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
-
   </div>
-</main>
 </div>
 
 <script src="assets/app.js"></script>
