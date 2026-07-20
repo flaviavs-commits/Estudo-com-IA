@@ -167,4 +167,190 @@
       }
     });
   });
+
+  // ── Tutor de IA: abas laterais (Contexto / Configurações) + drop de arquivos ──
+  var ctxBody = document.getElementById('tut-body');
+  if (ctxBody) {
+    var tabs = ctxBody.parentElement.querySelectorAll('.tut-tab');
+    var ctxCount = ctxBody.parentElement.querySelector('.tut-tab .tut-ctx-count');
+
+    function syncTabs() {
+      var open = ctxBody.getAttribute('data-open') || '';
+      tabs.forEach(function (t) {
+        t.setAttribute('aria-expanded', String(t.dataset.panel === open));
+      });
+    }
+    function openPanel(name) {
+      var cur = ctxBody.getAttribute('data-open') || '';
+      if (cur === name) { ctxBody.removeAttribute('data-open'); }  // clicar de novo fecha
+      else { ctxBody.setAttribute('data-open', name); }
+      syncTabs();
+    }
+    function closePanel() { ctxBody.removeAttribute('data-open'); syncTabs(); }
+
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { openPanel(t.dataset.panel); });
+    });
+    // Botões ✕ dentro de cada painel
+    ctxBody.querySelectorAll('.tut-ctx-close').forEach(function (b) {
+      b.addEventListener('click', closePanel);
+    });
+    // No overlay (telas médias), clicar no backdrop fecha
+    ctxBody.addEventListener('click', function (e) {
+      if (window.innerWidth <= 1100 && ctxBody.getAttribute('data-open')) {
+        if (!e.target.closest('.tut-ctx')) closePanel();
+      }
+    });
+    // Esc fecha o painel
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && ctxBody.getAttribute('data-open')) closePanel();
+    });
+    syncTabs();
+
+    // Accordion exclusivo: abrir uma seção fecha as outras (divide o vertical)
+    var secs = ctxBody.querySelectorAll('.tut-sec');
+    secs.forEach(function (sec) {
+      sec.addEventListener('toggle', function () {
+        if (sec.open) secs.forEach(function (o) { if (o !== sec) o.open = false; });
+      });
+    });
+
+    // Configurações: segmented controls e toggles
+    ctxBody.querySelectorAll('.tut-seg').forEach(function (seg) {
+      seg.addEventListener('click', function (e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        seg.querySelectorAll('button').forEach(function (b) { b.classList.remove('on'); });
+        btn.classList.add('on');
+      });
+    });
+    ctxBody.querySelectorAll('.tut-sw').forEach(function (sw) {
+      sw.addEventListener('click', function () {
+        var on = sw.classList.toggle('on');
+        sw.setAttribute('aria-checked', String(on));
+      });
+    });
+
+    // ── Episódios / áudio-revisão (seção dentro do painel de Contexto) ──
+    var epPanel = ctxBody.querySelector('.tut-ep');
+    if (epPanel) {
+      var picks = epPanel.querySelectorAll('.tut-pick-item input');
+      var pickCount = epPanel.querySelector('.tut-pick-count b');
+      var epGen = document.getElementById('tut-ep-gen');
+      var epList = epPanel.querySelector('.tut-ep-list');
+
+      function updatePicks() {
+        var n = 0;
+        picks.forEach(function (p) { if (p.checked) n++; });
+        if (pickCount) pickCount.textContent = String(n);
+        if (epGen) epGen.disabled = n === 0;
+      }
+      picks.forEach(function (p) { p.addEventListener('change', updatePicks); });
+      updatePicks();
+
+      var PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>';
+      var PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
+
+      // Play/pause — só um tocando por vez
+      if (epList) {
+        epList.addEventListener('click', function (e) {
+          var btn = e.target.closest('.tut-ep-play');
+          if (!btn) return;
+          var wasPlaying = btn.classList.contains('playing');
+          epList.querySelectorAll('.tut-ep-play.playing').forEach(function (b) {
+            b.classList.remove('playing'); b.innerHTML = PLAY;
+          });
+          if (!wasPlaying) { btn.classList.add('playing'); btn.innerHTML = PAUSE; }
+        });
+      }
+
+      // Gerar: estado de loading e novo item no topo da lista
+      if (epGen) {
+        epGen.addEventListener('click', function () {
+          if (epGen.disabled) return;
+          var label = epGen.innerHTML;
+          epGen.disabled = true;
+          epGen.innerHTML = '<span class="tut-file-spin"></span>Gerando episódio…';
+          setTimeout(function () {
+            var fmt = epPanel.querySelector('.tut-seg button.on');
+            var fmtTx = fmt ? fmt.textContent.toLowerCase() : 'diálogo';
+            var el = document.createElement('div');
+            el.className = 'tut-ep-item';
+            el.innerHTML =
+              '<button class="tut-ep-play" aria-label="Reproduzir">' + PLAY + '</button>' +
+              '<div class="tut-ep-tx"><b>Novo episódio — ' + fmtTx + '</b><span>agora · 7:30</span></div>' +
+              '<span class="tut-ep-dur">7:30</span>';
+            if (epList) epList.prepend(el);
+            epGen.disabled = false;
+            epGen.innerHTML = label;
+          }, 1800);
+        });
+      }
+    }
+
+    // Drop de arquivos (demonstração)
+    var drop = document.getElementById('tut-drop');
+    var fileInput = drop && drop.querySelector('input[type=file]');
+    var fileList = document.querySelector('.tut-files');
+
+    function iconFor(name) {
+      return /\.(png|jpe?g|gif|webp)$/i.test(name) ? '#i-book' : '#i-doc';
+    }
+    function fmtSize(bytes) {
+      if (bytes >= 1048576) return (bytes / 1048576).toFixed(1).replace('.', ',') + ' MB';
+      if (bytes >= 1024) return Math.round(bytes / 1024) + ' KB';
+      return bytes + ' B';
+    }
+    var secFilesCount = ctxBody.querySelector('.tut-sec .tut-sec-count');
+    function updateCount() {
+      if (!fileList) return;
+      var n = String(fileList.children.length);
+      if (ctxCount) ctxCount.textContent = n;
+      if (secFilesCount) secFilesCount.textContent = n;
+    }
+    function addFile(name, size) {
+      if (!fileList) return;
+      var el = document.createElement('div');
+      el.className = 'tut-file loading';
+      el.innerHTML =
+        '<span class="tut-file-ic"><svg><use href="' + iconFor(name) + '"/></svg></span>' +
+        '<div class="tut-file-tx"><b></b><span>analisando…</span></div>' +
+        '<span class="tut-file-spin"></span>';
+      el.querySelector('b').textContent = name;
+      fileList.prepend(el);
+      updateCount();
+      // Simula a IA "lendo" o arquivo
+      setTimeout(function () {
+        el.classList.remove('loading');
+        el.querySelector('.tut-file-tx span').textContent = fmtSize(size) + ' · lido pela IA';
+        var spin = el.querySelector('.tut-file-spin');
+        var x = document.createElement('button');
+        x.className = 'tut-file-x'; x.setAttribute('aria-label', 'Remover'); x.textContent = '✕';
+        if (spin) spin.replaceWith(x);
+      }, 1400);
+    }
+
+    // Remover arquivo (delegação — cobre os existentes e os novos)
+    if (fileList) {
+      fileList.addEventListener('click', function (e) {
+        var x = e.target.closest('.tut-file-x');
+        if (x) { x.closest('.tut-file').remove(); updateCount(); }
+      });
+    }
+
+    if (drop) {
+      drop.addEventListener('dragover', function (e) { e.preventDefault(); drop.classList.add('drag'); });
+      drop.addEventListener('dragleave', function () { drop.classList.remove('drag'); });
+      drop.addEventListener('drop', function (e) {
+        e.preventDefault(); drop.classList.remove('drag');
+        var files = e.dataTransfer && e.dataTransfer.files;
+        if (files) for (var i = 0; i < files.length; i++) addFile(files[i].name, files[i].size);
+      });
+      if (fileInput) fileInput.addEventListener('change', function () {
+        for (var i = 0; i < this.files.length; i++) addFile(this.files[i].name, this.files[i].size);
+        this.value = '';
+      });
+    }
+    updateCount();
+  }
 })();

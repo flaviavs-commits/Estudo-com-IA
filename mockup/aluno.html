@@ -32,6 +32,7 @@
 <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.6h7l4.4 4.4v11a1.4 1.4 0 0 1-1.4 1.4H7A1.4 1.4 0 0 1 5.6 19V5A1.4 1.4 0 0 1 7 3.6Z"/><path d="M14 3.6V8h4.4"/></symbol>
 <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.6 21 19.4H3Z"/><path d="M12 10.2v4"/><path d="M12 16.8v.1"/></symbol>
 <symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5.4 7.2h12.8a2 2 0 0 1 2 2v8.2a2 2 0 0 1-2 2H5.8a2 2 0 0 1-2-2V6.8A2.2 2.2 0 0 1 6 4.6h10.6"/><path d="M16.2 12.2h4v3.2h-4a1.6 1.6 0 0 1 0-3.2Z"/></symbol>
+<symbol id="i-cog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.1"/><path d="M12 3.4v2.3M12 18.3v2.3M20.6 12h-2.3M5.7 12H3.4M18.1 5.9l-1.6 1.6M7.5 16.5l-1.6 1.6M18.1 18.1l-1.6-1.6M7.5 7.5 5.9 5.9"/></symbol>
 </defs></svg>
 
 <div class="shell">
@@ -51,7 +52,7 @@
   </nav>
   <div class="spacer"></div>
   <div class="ddwrap sideuser-wrap">
-    <button class="sideuser" data-dd="dd-sideuser">
+    <button class="sideuser" style="cursor:default">
       <span class="av">MS</span>
       <div><b>Marina Souza</b><span>Estudante</span></div>
       <svg class="ic out-ic"><use href="#i-chev-up"/></svg>
@@ -153,47 +154,263 @@
 
   <!-- ══ TUTOR ══ -->
   <section class="screen" id="s-tutor">
-    <div class="phead">
-      <div class="tx">
-        <p class="eyebrow">Tutor de IA</p>
-        <h1>Português</h1>
-      </div>
-      <div class="actions"><button class="btn btn-gho"><svg class="ic"><use href="#i-clock"/></svg>Sessões anteriores</button></div>
-    </div>
-    <div class="chips" style="margin:0 0 16px">
-      <button class="chip on">Português</button><button class="chip">Matemática</button><button class="chip">História</button><button class="chip">Química</button><button class="chip">Redação</button>
-    </div>
-    <div class="cols">
-      <div class="card hero">
-        <div class="chat">
-          <div class="m-ai"><span class="av"><svg><use href="#i-spark"/></svg></span><div class="tx">Adjetiva ou adverbial? "Apesar de você..." -- que tipo é?</div></div>
-          <div class="m-me">Adverbial! Indica concessão, né?</div>
-          <div class="m-ai"><span class="av"><svg><use href="#i-spark"/></svg></span><div class="tx">Certo. Vamos para o ENEM ou revisamos <b>orações reduzidas</b>?</div></div>
-          <div class="m-me">Vai de ENEM. Se eu errar, a gente volta pra teoria.</div>
-          <div class="m-ai"><span class="av"><svg><use href="#i-spark"/></svg></span><div class="tx"><b>(ENEM 2023, adaptada)</b> Em <i>"Caminhando contra o vento, sem lenço e sem documento"</i>, a oração destacada é reduzida de gerúndio com valor de…<br>a) causa &nbsp;b) modo &nbsp;c) condição &nbsp;d) tempo</div></div>
+    <div class="tut">
+
+      <header class="tut-bar">
+        <button class="tut-exit" data-s="inicio" aria-label="Sair do tutor"><svg class="ic"><use href="#i-chev"/></svg></button>
+        <span class="tut-brand">
+          <span class="tut-orb"><svg><use href="#i-spark"/></svg></span>
+          <span class="tut-brand-tx"><b>Tutor de IA</b><i><span class="tut-pulse"></span>Sessão ativa</i></span>
+        </span>
+        <nav class="tut-subs">
+          <button class="tut-sub on">Português</button>
+          <button class="tut-sub">Matemática</button>
+          <button class="tut-sub">História</button>
+          <button class="tut-sub">Química</button>
+          <button class="tut-sub">Redação</button>
+        </nav>
+        <button class="tut-hist"><svg class="ic"><use href="#i-clock"/></svg><span>Sessões</span></button>
+        <div class="tut-tabs" id="tut-tabs">
+          <button class="tut-tab" data-panel="ctx" aria-expanded="false"><svg class="ic"><use href="#i-doc"/></svg><span>Contexto</span><span class="tut-ctx-count">3</span></button>
+          <button class="tut-tab" data-panel="cfg" aria-expanded="false"><svg class="ic"><use href="#i-cog"/></svg><span>Configurações</span></button>
         </div>
-        <div class="chips"><button class="chip">Só explicar</button><button class="chip">Dica</button><button class="chip">3 parecidas</button></div>
-        <div class="composer"><input placeholder="Sua resposta…" aria-label="Resposta"><button class="send" aria-label="Enviar"><svg><use href="#i-send"/></svg></button></div>
-      </div>
-      <div class="stack">
-        <div class="card">
-          <h2><svg class="ic"><use href="#i-spark"/></svg>O que o tutor lembra</h2>
-          <ul class="list" style="margin-top:12px">
-            <li><span class="dot" style="background:var(--warn)"></span><div class="tx"><b>Orações reduzidas</b><span>dificuldade ativa · 3 sessões</span></div></li>
-            <li><span class="dot" style="background:var(--good)"></span><div class="tx"><b>Subordinadas adjetivas</b><span>superada em 15/07</span></div></li>
-            <li><span class="dot" style="background:var(--green)"></span><div class="tx"><b>Aprende com música</b><span>preferência</span></div></li>
-            <li><span class="dot" style="background:var(--green)"></span><div class="tx"><b>Meta: ENEM 2027</b><span>foco em linguagens</span></div></li>
-          </ul>
+      </header>
+
+      <div class="tut-body" id="tut-body">
+
+        <div class="tut-chat">
+          <div class="tut-scroll">
+            <div class="tut-flow">
+
+              <div class="tut-memory">
+                <svg class="ic"><use href="#i-spark"/></svg>
+                <span>Retomando de terça-feira — dificuldade ativa em <b>orações reduzidas</b>, você aprende melhor com música.</span>
+              </div>
+
+              <div class="tut-day">Hoje</div>
+
+              <div class="tmsg ai">
+                <span class="tmsg-av"><svg><use href="#i-spark"/></svg></span>
+                <div class="tmsg-bubble">Adjetiva ou adverbial? <i>"Apesar de você…"</i> — que tipo é?</div>
+              </div>
+              <div class="tmsg me"><div class="tmsg-bubble">Adverbial! Indica concessão, né?</div></div>
+              <div class="tmsg ai">
+                <span class="tmsg-av"><svg><use href="#i-spark"/></svg></span>
+                <div class="tmsg-bubble">Certo. Vamos para o ENEM ou revisamos <b>orações reduzidas</b>?</div>
+              </div>
+              <div class="tmsg me"><div class="tmsg-bubble">Vai de ENEM. Se eu errar, a gente volta pra teoria.</div></div>
+
+              <div class="tmsg ai">
+                <span class="tmsg-av"><svg><use href="#i-spark"/></svg></span>
+                <div class="tmsg-bubble tmsg-quiz">
+                  <span class="tmsg-tag">ENEM 2023 · adaptada</span>
+                  <p>Em <i>"Caminhando contra o vento, sem lenço e sem documento"</i>, a oração destacada é reduzida de gerúndio com valor de…</p>
+                  <div class="tut-opts">
+                    <button class="tut-opt"><b>a</b>causa</button>
+                    <button class="tut-opt"><b>b</b>modo</button>
+                    <button class="tut-opt"><b>c</b>condição</button>
+                    <button class="tut-opt"><b>d</b>tempo</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="tut-dock">
+            <div class="tut-flow">
+              <div class="tut-quick">
+                <button><svg class="ic"><use href="#i-doc"/></svg>Só explicar</button>
+                <button><svg class="ic"><use href="#i-spark"/></svg>Dar uma dica</button>
+                <button><svg class="ic"><use href="#i-cards"/></svg>3 parecidas</button>
+              </div>
+              <div class="tut-input">
+                <input placeholder="Responder ao tutor…" aria-label="Resposta">
+                <button class="tut-send" aria-label="Enviar"><svg><use href="#i-send"/></svg></button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <h2><svg class="ic"><use href="#i-clock"/></svg>Últimas sessões</h2>
-          <ul class="list" style="margin-top:12px">
-            <li><div class="tx"><b>Análise sintática II</b><span>ter 15/07 · 28 min</span></div><span class="pill p-ok">4/5</span></li>
-            <li><div class="tx"><b>Funções do 2º grau</b><span>seg 14/07 · 35 min</span></div><span class="pill p-warn">2/5</span></li>
-            <li><div class="tx"><b>Era Vargas — revisão</b><span>sáb 12/07 · 19 min</span></div><span class="pill p-ok">5/5</span></li>
-          </ul>
-        </div>
+
+        <aside class="tut-ctx" data-panel="ctx">
+          <div class="tut-ctx-head">
+            <div>
+              <b>Contexto da sessão</b>
+              <span>O que a IA usa para te ajudar</span>
+            </div>
+            <button class="tut-ctx-close" aria-label="Esconder painel"><svg class="ic"><use href="#i-chev"/></svg></button>
+          </div>
+
+          <div class="tut-acc">
+
+            <details class="tut-sec" open>
+              <summary>
+                <svg class="tut-sec-ic ic"><use href="#i-doc"/></svg>
+                <span class="tut-sec-tx"><b>Conteúdos</b><small>arquivos e materiais</small></span>
+                <span class="tut-sec-count">3</span>
+                <svg class="tut-sec-chev ic"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="tut-sec-body">
+                <label class="tut-drop" id="tut-drop">
+                  <input type="file" multiple hidden>
+                  <span class="tut-drop-ic"><svg><use href="#i-download"/></svg></span>
+                  <b>Arraste arquivos aqui</b>
+                  <span>ou <u>clique para escolher</u></span>
+                  <small>PDF, DOCX, imagens ou slides · até 20&nbsp;MB</small>
+                </label>
+
+                <div class="tut-files">
+                  <div class="tut-file">
+                    <span class="tut-file-ic"><svg><use href="#i-doc"/></svg></span>
+                    <div class="tut-file-tx"><b>Prova_Portugues_2023.pdf</b><span>1,4 MB · lido pela IA</span></div>
+                    <button class="tut-file-x" aria-label="Remover">✕</button>
+                  </div>
+                  <div class="tut-file">
+                    <span class="tut-file-ic"><svg><use href="#i-book"/></svg></span>
+                    <div class="tut-file-tx"><b>Aula_oracoes_reduzidas.docx</b><span>320 KB · lido pela IA</span></div>
+                    <button class="tut-file-x" aria-label="Remover">✕</button>
+                  </div>
+                  <div class="tut-file loading">
+                    <span class="tut-file-ic"><svg><use href="#i-doc"/></svg></span>
+                    <div class="tut-file-tx"><b>Resumo_sintaxe.pdf</b><span>analisando…</span></div>
+                    <span class="tut-file-spin"></span>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="tut-sec">
+              <summary>
+                <svg class="tut-sec-ic ic"><use href="#i-audio"/></svg>
+                <span class="tut-sec-tx"><b>Áudio-revisão</b><small>gere episódios do conteúdo</small></span>
+                <span class="tut-sec-count">2</span>
+                <svg class="tut-sec-chev ic"><use href="#i-chev"/></svg>
+              </summary>
+              <div class="tut-sec-body">
+                <div class="tut-ep">
+                  <div class="tut-cfg-field">
+                    <label>Conteúdo do episódio</label>
+                    <div class="tut-pick">
+                      <label class="tut-pick-item"><input type="checkbox" checked><span><b>Orações reduzidas</b><small>sessão de hoje · Português</small></span></label>
+                      <label class="tut-pick-item"><input type="checkbox"><span><b>Subordinadas adjetivas</b><small>revisado 15/07</small></span></label>
+                      <label class="tut-pick-item"><input type="checkbox" checked><span><b>Prova_Portugues_2023.pdf</b><small>arquivo de contexto</small></span></label>
+                      <label class="tut-pick-item"><input type="checkbox"><span><b>Era Vargas</b><small>História · flashcards</small></span></label>
+                    </div>
+                    <small class="tut-pick-count"><b>2</b> selecionados</small>
+                  </div>
+
+                  <div class="tut-cfg-field">
+                    <label>Formato</label>
+                    <div class="tut-seg">
+                      <button class="on">Diálogo</button>
+                      <button>Aula</button>
+                      <button>Resumo</button>
+                    </div>
+                  </div>
+
+                  <div class="tut-ep-row">
+                    <div class="tut-cfg-field">
+                      <label>Voz</label>
+                      <div class="tut-select">Clara <svg class="ic"><use href="#i-chev"/></svg></div>
+                    </div>
+                    <div class="tut-cfg-field">
+                      <label>Duração</label>
+                      <div class="tut-select">~8 min <svg class="ic"><use href="#i-chev"/></svg></div>
+                    </div>
+                  </div>
+
+                  <button class="tut-ep-gen" id="tut-ep-gen"><svg class="ic"><use href="#i-spark"/></svg>Gerar episódio · 6 créditos</button>
+
+                  <div class="tut-cfg-field">
+                    <label>Gerados nesta matéria</label>
+                    <div class="tut-ep-list">
+                      <div class="tut-ep-item">
+                        <button class="tut-ep-play" aria-label="Reproduzir"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+                        <div class="tut-ep-tx"><b>Orações reduzidas — diálogo</b><span>hoje · 8:12</span></div>
+                        <span class="tut-ep-dur">8:12</span>
+                      </div>
+                      <div class="tut-ep-item">
+                        <button class="tut-ep-play" aria-label="Reproduzir"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+                        <div class="tut-ep-tx"><b>Análise sintática — resumo</b><span>15/07 · 5:40</span></div>
+                        <span class="tut-ep-dur">5:40</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+          </div>
+
+          <p class="tut-ctx-note"><svg class="ic"><use href="#i-spark"/></svg>O tutor cruza esses materiais com o seu histórico ao responder.</p>
+        </aside>
+
+        <aside class="tut-ctx" data-panel="cfg">
+          <div class="tut-ctx-head">
+            <div>
+              <b>Configurações do tutor</b>
+              <span>Como a IA conduz esta sessão</span>
+            </div>
+            <button class="tut-ctx-close" aria-label="Esconder painel"><svg class="ic"><use href="#i-chev"/></svg></button>
+          </div>
+
+          <div class="tut-cfg">
+            <div class="tut-cfg-field">
+              <label>Estilo do tutor</label>
+              <div class="tut-seg">
+                <button class="on">Socrático</button>
+                <button>Direto</button>
+              </div>
+              <small>Socrático conduz por perguntas; direto explica de imediato.</small>
+            </div>
+
+            <div class="tut-cfg-field">
+              <label>Nível de dificuldade</label>
+              <div class="tut-seg">
+                <button>Básico</button>
+                <button class="on">Médio</button>
+                <button>Difícil</button>
+              </div>
+            </div>
+
+            <div class="tut-cfg-field">
+              <label>Foco do exame</label>
+              <div class="tut-select">ENEM <svg class="ic"><use href="#i-chev"/></svg></div>
+            </div>
+
+            <div class="tut-cfg-field">
+              <label>Tamanho das respostas</label>
+              <div class="tut-seg">
+                <button class="on">Curtas</button>
+                <button>Detalhadas</button>
+              </div>
+            </div>
+
+            <div class="tut-cfg-toggles">
+              <div class="tut-toggle">
+                <div><b>Correção comentada</b><span>explica cada erro</span></div>
+                <button class="tut-sw on" role="switch" aria-checked="true"></button>
+              </div>
+              <div class="tut-toggle">
+                <div><b>Foco nas minhas dificuldades</b><span>prioriza tópicos fracos</span></div>
+                <button class="tut-sw on" role="switch" aria-checked="true"></button>
+              </div>
+              <div class="tut-toggle">
+                <div><b>Resposta em áudio</b><span>lê as explicações em voz</span></div>
+                <button class="tut-sw" role="switch" aria-checked="false"></button>
+              </div>
+              <div class="tut-toggle">
+                <div><b>Usar arquivos de contexto</b><span>3 arquivos anexados</span></div>
+                <button class="tut-sw on" role="switch" aria-checked="true"></button>
+              </div>
+            </div>
+
+            <p class="tut-ctx-note"><svg class="ic"><use href="#i-spark"/></svg>As mudanças valem já na próxima resposta do tutor.</p>
+          </div>
+        </aside>
+
       </div>
+
     </div>
   </section>
 
